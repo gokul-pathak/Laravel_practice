@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Posts;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +74,29 @@ use App\Http\Controllers\PostController;
 // });
 
 
-Route::get('/delete', function(){
-    $deleted = DB::delete('delete from posts where id=?', [1]);
-    return $deleted;
+// Route::get('/delete', function(){
+//     $deleted = DB::delete('delete from posts where id=?', [1]);
+//     return $deleted;
+// });
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/find', function(){
+    $posts = Post::all();
+    foreach($posts as $post){
+       return $post->title;
+    }
+
+
+});
+
+Route::get('/find2', function(){
+    $post = Post::find(3);
+    return $post->title;
 });
