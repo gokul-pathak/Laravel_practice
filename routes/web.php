@@ -114,3 +114,12 @@ Route::get('/findmore', function(){
     $posts = Post::where('users_count', '<', 50)-> firstOrFail();
     return $posts;
 });
+
+
+Route::get('/basicinsert', function(){
+    $post = new Post;
+    $post->title = 'new eloquent title insert';
+    $post->content = 'wow eloquent pretty cool. visible inserted content is here';
+    $post->save();
+
+});
