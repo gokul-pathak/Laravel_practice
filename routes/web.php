@@ -116,10 +116,19 @@ Route::get('/findmore', function(){
 });
 
 
-Route::get('/basicinsert', function(){
-    $post = new Post;
-    $post->title = 'new eloquent title insert';
-    $post->content = 'wow eloquent pretty cool. visible inserted content is here';
+// Route::get('/basicinsert', function(){
+//     $post = new Post;
+//     $post->title = 'new eloquent title insert';
+//     $post->content = 'wow eloquent pretty cool. visible inserted content is here';
+//     $post->save();
+
+// });
+
+Route::get('/basicinsert2', function(){
+    $post = Post::find(2);
+    $post->title = 'new eloquent title insert 2';
+    $post->content = 'wow eloquent pretty cool. visible inserted content is here 2';
     $post->save();
 
 });
+
