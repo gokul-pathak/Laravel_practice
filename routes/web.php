@@ -103,7 +103,14 @@ Route::get('/find2', function(){
 
 
 Route::get('/findwhere', function(){
-    $posts = Post::where('id', 3)->orderBy('id', 'desc')->get();
+    $posts = Post::where('id', 3)->orderBy('id', 'desc')->take(1)->get();
     return $posts;
 
+});
+
+Route::get('/findmore', function(){
+    // $posts = Post::findOrFail(1);
+    // return $posts;
+    $posts = Post::where('users_count', '<', 50)-> firstOrFail();
+    return $posts;
 });
