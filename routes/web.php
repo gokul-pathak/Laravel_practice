@@ -132,3 +132,7 @@ Route::get('/basicinsert2', function(){
 
 });
 
+Route::get('/create', function(){
+
+    Post::create(['title'=>'the create method','content'=>'wow this is working']);
+});
