@@ -116,13 +116,13 @@ Route::get('/findmore', function(){
 });
 
 
-// Route::get('/basicinsert', function(){
-//     $post = new Post;
-//     $post->title = 'new eloquent title insert';
-//     $post->content = 'wow eloquent pretty cool. visible inserted content is here';
-//     $post->save();
+Route::get('/basicinsert', function(){
+    $post = new Post;
+    $post->title = 'new eloquent title insert';
+    $post->content = 'wow eloquent pretty cool. visible inserted content is here';
+    $post->save();
 
-// });
+});
 
 Route::get('/basicinsert2', function(){
     $post = Post::find(2);
@@ -160,7 +160,7 @@ Route::get('/delete3', function(){
 
 
 Route::get('/softdelete', function(){
-    Post::find(8)->delete();
+    Post::find(14)->delete();
 });
 
 Route::get('/Readsoftdelete', function(){
@@ -171,4 +171,13 @@ Route::get('/Readsoftdelete', function(){
     // return $post;
     $post = Post::onlyTrashed()->where('is_admin', 0)->get();
     return $post;
+});
+
+Route::get('/restore', function(){
+    Post::withTrashed()->where('is_admin',0)->restore();
+});
+
+Route::get('/forcedelete', function(){
+    Post::onlyTrashed()->where('is_admin',0)->forceDelete();
+
 });
