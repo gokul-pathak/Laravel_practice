@@ -100,3 +100,10 @@ Route::get('/find2', function(){
     $post = Post::find(3);
     return $post->title;
 });
+
+
+Route::get('/findwhere', function(){
+    $posts = Post::where('id', 3)->orderBy('id', 'desc')->get();
+    return $posts;
+
+});
