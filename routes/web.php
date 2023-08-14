@@ -141,3 +141,19 @@ Route::get('/create', function(){
 Route::get('/update2', function(){
     Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'New PHP Title', 'Content'=>'Wow content is displayed']);
 });
+
+
+Route::get('/delete2', function(){
+    $post = Post::find(3);
+    $post->delete();
+
+
+});
+
+
+Route::get('/delete3', function(){
+    //Post::destroy(4); //single delete
+    Post::destroy([6,7]); //multiple delete
+    //Post::where('is_admin',0)->delete();
+
+});
