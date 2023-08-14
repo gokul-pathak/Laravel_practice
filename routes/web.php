@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Posts;
 use App\Models\Post;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -180,4 +181,16 @@ Route::get('/restore', function(){
 Route::get('/forcedelete', function(){
     Post::onlyTrashed()->where('is_admin',0)->forceDelete();
 
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationships
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/user/{id}/post', function($id){
+    // return User::find($id)->post;
+    return User::find($id)->post->title;
 });
