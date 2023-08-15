@@ -201,3 +201,11 @@ Route::get('/user/{id}/post', function($id){
 Route::get('/user/{id}/post', function($id){
     return Post::find($id)->user->name;
 });
+
+//1 to many relationship
+Route::get('/postsr', function(){
+    $user = User::find(1);
+    foreach ($user->posts as $post) {
+        echo $post->title. "</br>"; //return return only 1 value where echo return all
+    }
+});
