@@ -209,3 +209,15 @@ Route::get('/postsr', function(){
         echo $post->title. "</br>"; //return return only 1 value where echo return all
     }
 });
+
+
+// many to many relationship
+
+Route::get('/user/{id}/role', function($id){
+    // $user= User::find(1)->roles()->orderBy('id', 'desc')->get();
+    // return $user;
+    $user= User::find($id);
+    foreach($user->roles as $role){
+        return $role->name;
+    }
+});
