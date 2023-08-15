@@ -189,8 +189,9 @@ Route::get('/forcedelete', function(){
 | Eloquent relationships
 |--------------------------------------------------------------------------
 */
+//1 to 1 relationship
 
 Route::get('/user/{id}/post', function($id){
-    // return User::find($id)->post;
-    return User::find($id)->post->title;
+    // return User::find($id)->post->title;
+    return User::find($id)->post->content;
 });
