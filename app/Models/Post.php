@@ -19,5 +19,9 @@ class Post extends Model
         "content" ,
     ];
 
+    //function for inverse relationship
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 
 }

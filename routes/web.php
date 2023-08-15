@@ -195,3 +195,9 @@ Route::get('/user/{id}/post', function($id){
     // return User::find($id)->post->title;
     return User::find($id)->post->content;
 });
+
+//inverse relationship
+
+Route::get('/user/{id}/post', function($id){
+    return Post::find($id)->user->name;
+});
