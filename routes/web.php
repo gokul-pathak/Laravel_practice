@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Posts;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Country;
@@ -249,7 +248,7 @@ Route::get('/user/country', function(){
 
 // polymorphics relations
 
-Route::get('user/photos', function(){
+Route::get('/user/photos', function(){
     $user = User::find(1);
     foreach($user->photos as $photo){
         return $photo->path;
@@ -257,10 +256,16 @@ Route::get('user/photos', function(){
 });
 
 
-Route::get('post/{id}/photos', function($id){
+Route::get('/post/{id}/photos', function($id){
     $post = Post::find($id);
     foreach($post->photos as $photo){
         // return $photo->path;
         echo $photo->path. "</br> ";
     }
+});
+
+Route::get('/photo/{id}/post', function($id){
+    $photo = Photo::findOrFail($id);
+    // $imageable = $photo->imageable_id;
+    return $photo->imageable;
 });
