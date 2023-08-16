@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Photo;
+use App\Models\Tag;
 
 
 /*
@@ -277,5 +278,13 @@ Route::get('/post/tag', function(){
     $post = Post::find(1);
     foreach($post->tags as $tag){
         echo $tag->name;
+    }
+});
+
+Route::get('tag/post', function(){
+    $tag = Tag::find(2);
+    // return $tag->posts;
+    foreach($tag->posts as $post){
+        return $post->title;
     }
 });
