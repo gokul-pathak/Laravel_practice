@@ -6,6 +6,8 @@ use App\Posts;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Photo;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -242,4 +244,23 @@ Route::get('/user/country', function(){
         // echo "Country Name: ".$post->user->name."</br> ";
     }
 
+});
+
+
+// polymorphics relations
+
+Route::get('user/photos', function(){
+    $user = User::find(1);
+    foreach($user->photos as $photo){
+        return $photo->path;
+    }
+});
+
+
+Route::get('post/{id}/photos', function($id){
+    $post = Post::find($id);
+    foreach($post->photos as $photo){
+        // return $photo->path;
+        echo $photo->path. "</br> ";
+    }
 });
