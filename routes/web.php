@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Posts;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,11 +225,21 @@ Route::get('/user/{id}/role', function($id){
 
 
 // accessing the intermediate table / pivot table
-Route::get('user/pivot', function(){
+Route::get('/user/pivot', function(){
     $user = User::find(1);
 
     foreach($user->roles as $role){
         echo $role->pivot->created_at;
         // echo $role->pivot->created_at;
     }
+});
+
+//has many through relation
+Route::get('/user/country', function(){
+    $country = Country::find(2);
+    foreach($country->posts as $post){
+        return $post->title;
+        // echo "Country Name: ".$post->user->name."</br> ";
+    }
+
 });
