@@ -11,10 +11,11 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
         //
-        return "this is working the number is ".$id;
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -42,6 +43,8 @@ class PostController extends Controller
         // $post = new Post;
         // $post->title=$request->title;
         // $post->save();
+
+        return redirect('/posts');
     }
 
     /**
