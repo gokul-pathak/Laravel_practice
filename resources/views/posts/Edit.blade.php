@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <h1>Edit Post</h1>
     <form method="POST" action="/posts">
         @csrf
         <input type="text" name="title" placeholder="enter title...">
