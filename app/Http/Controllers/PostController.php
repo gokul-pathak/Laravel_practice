@@ -83,7 +83,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //$post = Post::whereId($id)->delete();
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('posts');
     }
     public function contact(){
 
